@@ -7,6 +7,18 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+
+
+    public function __construct()
+    {     #here is how to protect routes using the middlewares via the role and permission i make this is as exxampele for it
+            #protect some routes of the permissions routes and  make some simple test free to add the same thing for other routes.
+        $this->middleware('permission:add role',['only'=>['create']]);
+        $this->middleware('permission:delet role',['only'=>['destroy']]); #maybe some admins don't have the permission for the delet:)
+        $this->middleware('permission:edit role',['only'=>['edit','update']]);
+        
+    } 
+
+
    /**
      * Display a listing of the resource.
      */
